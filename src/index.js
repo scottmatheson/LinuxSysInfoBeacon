@@ -8,11 +8,12 @@
 
  **********************************/
 
+const args = require('minimist')(process.argv.slice(2));
 const pjson = require('../package.json');
 const options = require('../options.json');
+const loopDelay = options.sampleInterval * 1000 | args.i || 60000;
+
 const colors = require('colors');
-const args = require('minimist')(process.argv.slice(2));
-const loopDelay = args.i || 6000;
 const verbose = args.hasOwnProperty('v');
 
 const Promise = require('bluebird');
