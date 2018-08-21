@@ -1,0 +1,180 @@
+{
+  "cpu": {
+    "manufacturer": "Intel®",
+    "brand": "Core™ i7-4960HQ",
+    "vendor": "GenuineIntel",
+    "family": "6",
+    "model": "70",
+    "stepping": "1",
+    "revision": "",
+    "voltage": "",
+    "speed": "2.60",
+    "speedmin": "2.60",
+    "speedmax": "2.60",
+    "cores": 8,
+    "cache": {
+      "l1d": 32768,
+      "l1i": 32768,
+      "l2": 262144,
+      "l3": 6291456
+    }
+  },
+  "mem": {
+    "total": 17179869184,
+    "free": 851505152,
+    "used": 16328364032,
+    "active": 6206128128,
+    "available": 10973741056,
+    "buffcache": 10122235904,
+    "swaptotal": 3221225472,
+    "swapused": 1803026432,
+    "swapfree": 1418199040
+  },
+  "fsSize": [
+    {
+      "fs": "/dev/disk1s1",
+      "type": "HFS",
+      "size": 1000345825280,
+      "used": 970384715776,
+      "use": 97,
+      "mount": "/"
+    },
+    {
+      "fs": "/dev/disk1s4",
+      "type": "HFS",
+      "size": 1000345825280,
+      "used": 4295708672,
+      "use": 0.43,
+      "mount": "/private/var/vm"
+    }
+  ],
+  "currentLoad": {
+    "avgload": 0.35,
+    "currentload": 6.391317478702632,
+    "currentload_user": 4.20935444162186,
+    "currentload_system": 2.1819630370807728,
+    "currentload_nice": 0,
+    "currentload_idle": 93.60868252129737,
+    "currentload_irq": 0,
+    "raw_currentload": 158002020,
+    "raw_currentload_user": 104060940,
+    "raw_currentload_system": 53941080,
+    "raw_currentload_nice": 0,
+    "raw_currentload_idle": 2314133350,
+    "raw_currentload_irq": 0,
+    "cpus": [
+      {
+        "load": 16.62098236632929,
+        "load_user": 11.138012020528826,
+        "load_system": 5.482970345800464,
+        "load_nice": 0,
+        "load_idle": 83.3790176336707,
+        "load_irq": 0,
+        "raw_load": 51362660,
+        "raw_load_user": 34419020,
+        "raw_load_system": 16943640,
+        "raw_load_nice": 0,
+        "raw_load_idle": 257660350,
+        "raw_load_irq": 0
+      },
+      {
+        "load": 1.3280381163459574,
+        "load_user": 0.787344395587568,
+        "load_system": 0.5406937207583893,
+        "load_nice": 0,
+        "load_idle": 98.67196188365405,
+        "load_irq": 0,
+        "raw_load": 4103850,
+        "raw_load_user": 2433020,
+        "raw_load_system": 1670830,
+        "raw_load_nice": 0,
+        "raw_load_idle": 304912130,
+        "raw_load_irq": 0
+      },
+      {
+        "load": 9.958146980395552,
+        "load_user": 6.530790056848952,
+        "load_system": 3.4273569235466006,
+        "load_nice": 0,
+        "load_idle": 90.04185301960445,
+        "load_irq": 0,
+        "raw_load": 30772380,
+        "raw_load_user": 20181260,
+        "raw_load_system": 10591120,
+        "raw_load_nice": 0,
+        "raw_load_idle": 278244750,
+        "raw_load_irq": 0
+      },
+      {
+        "load": 1.1087138579459277,
+        "load_user": 0.7089866078329804,
+        "load_system": 0.39972725011294735,
+        "load_nice": 0,
+        "load_idle": 98.89128614205407,
+        "load_irq": 0,
+        "raw_load": 3426100,
+        "raw_load_user": 2190880,
+        "raw_load_system": 1235220,
+        "raw_load_nice": 0,
+        "raw_load_idle": 305589610,
+        "raw_load_irq": 0
+      },
+      {
+        "load": 9.943741226404308,
+        "load_user": 6.544792127570845,
+        "load_system": 3.398949098833464,
+        "load_nice": 0,
+        "load_idle": 90.05625877359569,
+        "load_irq": 0,
+        "raw_load": 30727820,
+        "raw_load_user": 20224500,
+        "raw_load_system": 10503320,
+        "raw_load_nice": 0,
+        "raw_load_idle": 278288870,
+        "raw_load_irq": 0
+      },
+      {
+        "load": 1.1110027741980393,
+        "load_user": 0.7091361101288696,
+        "load_system": 0.40186666406916965,
+        "load_nice": 0,
+        "load_idle": 98.88899722580196,
+        "load_irq": 0,
+        "raw_load": 3433170,
+        "raw_load_user": 2191340,
+        "raw_load_system": 1241830,
+        "raw_load_nice": 0,
+        "raw_load_idle": 305582260,
+        "raw_load_irq": 0
+      },
+      {
+        "load": 9.949974800678774,
+        "load_user": 6.548066435080148,
+        "load_system": 3.4019083655986257,
+        "load_nice": 0,
+        "load_idle": 90.05002519932123,
+        "load_irq": 0,
+        "raw_load": 30747040,
+        "raw_load_user": 20234590,
+        "raw_load_system": 10512450,
+        "raw_load_nice": 0,
+        "raw_load_idle": 278269220,
+        "raw_load_irq": 0
+      },
+      {
+        "load": 1.1096542965723755,
+        "load_user": 0.707515450051059,
+        "load_system": 0.4021388465213163,
+        "load_nice": 0,
+        "load_idle": 98.89034570342763,
+        "load_irq": 0,
+        "raw_load": 3429000,
+        "raw_load_user": 2186330,
+        "raw_load_system": 1242670,
+        "raw_load_nice": 0,
+        "raw_load_idle": 305586160,
+        "raw_load_irq": 0
+      }
+    ]
+  }
+}
