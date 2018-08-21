@@ -57,7 +57,7 @@ function sample() {
     Promise.props(functionObj)
         .then(res => {
             log(res);
-            fs.writeFileSync('example.json', JSON.stringify(res, null, 2));
+            //fs.writeFileSync('example.json', JSON.stringify(res, null, 2));
             Beacon.transmit({beaconMessageType: 'SYSINFO', data: res});
         })
         .catch(err => {
