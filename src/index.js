@@ -30,7 +30,6 @@ function log(msg) {
     console.log(msg)
 }
 
-
 function printHeader() {
     log("\n==================================".green);
     log("Hrbr.io SystemInformation Linux Beacon in Node".green);
@@ -73,7 +72,7 @@ function initialize(beaconInstanceId) {
 
     Beacon.initialize({
         apiKey: options.apikey,
-        appVersionId: `${pjson.name}:${pjson.version}`,
+        appVersionId: options.appVersionId || `${pjson.name}:${pjson.version}`,
         beaconVersionId: `${pjson.name}:${pjson.version}`,
         beaconInstanceId: beaconInstanceId,
         // txOptions: {

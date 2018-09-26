@@ -30,6 +30,7 @@ An example JSON options file is shown below.
 ```{
      "apikey": "XYZDEF",
      "beaconInstanceId": "auto:mac:en0",
+     "appVersionId": "io.bertco.coolapp:1.0.2",
      "functions": []
    }
 ```
@@ -37,6 +38,7 @@ An example JSON options file is shown below.
 |     Key     |      Value     |  Required |
 |-------------|----------------|-----------|
 | apikey | Your Harbor API Key |    yes    |
+| appVersionId | The app this Beacon is assigned to. This app must exist in your Harbor account, or beacon messages will be rejected. | yes |
 | beaconVersionId | Your chosen beacon instance ID (device or system identifier) or enter `auto:mac:<if>` to use the MAC address of one of your network interfaces. For example, to use `en0` enter `auto:mac:en0`.| no, defaults to `null`|
 | functions | SystemInfo functions you want to run on each pass. Refer to the SystemInformation documentation for a list of legal functions. If you attempt an illegal function, it will be flagged int he output.| no, defaults to `["cpu", "mem", "fsSize", "currentLoad"]` |
 | sampleInterval | Sample interval in seconds. Overrides the command line. | no |
