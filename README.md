@@ -41,15 +41,23 @@ An example JSON options file is shown below.
 | apikey | Your Harbor API Key |    yes    |
 | appVersionId | The app this Beacon is assigned to. This app must exist in your Harbor account, or beacon messages will be rejected. | yes |
 | beaconVersionId | Your chosen beacon instance ID (device or system identifier) or enter `auto:mac:<if>` to use the MAC address of one of your network interfaces. For example, to use `en0` enter `auto:mac:en0`.| no, defaults to `null`|
-| functions | SystemInfo functions you want to run on each pass. Refer to the SystemInformation documentation for a list of legal functions. If you attempt an illegal function, it will be flagged int he output.| no, defaults to `["cpu", "mem", "fsSize", "currentLoad"]` |
+| functions | SystemInfo functions you want to run on each pass. Refer to the SystemInformation documentation for a list of legal functions. If you attempt an illegal function, it will be flagged in the output.| no, defaults to `["cpu", "mem", "fsSize", "currentLoad"]` |
 | sampleInterval | Sample interval in seconds. Overrides the command line. | no |
+| server | One of "production", "staging", "local". This is for in-house testing and is normally not used. | no, default is "production" |  
 
+
+## Summary Info
+
+| Item | Value | Comments |
+|------|-------|----------|
+| Beacon Instance ID |  harbor-linux-sysinfo-beacon:0.1.0 | Check package.json as version may have changed |
+| Beacon Message Type(s) | SYSINFO | Sends only one type |
 
 ## Beacon Message Format
 
 Beacon messages sent by this app follow the following data schema:
 
-```{ beaconMessageType: 'SYSTINFO', data: {<functionName>: {[ results ]}, ...}```
+```{ beaconMessageType: 'SYSINFO', data: {<functionName>: {[ results ]}, ...}```
 
 Which is probably a little confusing, so here's some real output.
 

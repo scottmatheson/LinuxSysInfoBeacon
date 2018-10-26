@@ -1,11 +1,12 @@
 {
   "name": "harbor-linux-sysinfo-beacon",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hrbr.io Linux Sysinfo agent that makes use of the ES6 Beacon Driver",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/bootstrap.test.js tests/**/*.test.js",
-    "agent": "node ./src/index.js -v -i 10000&"
+    "agent": "node ./src/index.js -v -i 10000&",
+    "start": "node ./src/index.js -v"
   },
   "author": {
     "name": "Mitch Kahn",
@@ -18,7 +19,7 @@
     "nyc": "^12.0.2"
   },
   "dependencies": {
-    "beacon-es6-driver": "*",
+    "beacon-es6-driver": "^0.6.0",
     "bluebird": "^3.5.1",
     "colors": "^1.3.0",
     "minimist": "^1.2.0",

@@ -378,9 +378,9 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-beacon-es6-driver@*:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/beacon-es6-driver/-/beacon-es6-driver-0.5.4.tgz#bf0d9ac94b974b8f24f8533e85ec6e49ffcde7b7"
+beacon-es6-driver@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/beacon-es6-driver/-/beacon-es6-driver-0.6.0.tgz#98290c3032fa026f38896689e8debd29757af2ff"
   dependencies:
     bluebird "^3.5.1"
     lodash "^4.17.4"

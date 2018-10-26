@@ -75,9 +75,9 @@ function initialize(beaconInstanceId) {
         appVersionId: options.appVersionId || `${pjson.name}:${pjson.version}`,
         beaconVersionId: `${pjson.name}:${pjson.version}`,
         beaconInstanceId: beaconInstanceId,
-        // txOptions: {
-        //     useLocalServer: !useRemoteServer
-        // },
+        txOptions: {
+            server: options.server || 'production'
+        },
         bufferOptions: {
             lengthLimit: 100000
         },
@@ -86,6 +86,9 @@ function initialize(beaconInstanceId) {
     });
 
     setInterval(sample, loopDelay);
+    // setInterval(()=>{
+    //     Beacon.transmit({beaconMessageType: 'HBEAT', data: { message: 'Alive!', random: Math.random()*10 }});
+    // }, 2500);
 
 }
 
