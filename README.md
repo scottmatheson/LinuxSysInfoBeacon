@@ -28,30 +28,45 @@ Verbose mode, 10s interval.
 
 An example JSON options file is shown below.
 
-```{
-     "apikey": "XYZDEF",
-     "beaconInstanceId": "auto:mac:en0",
-     "appVersionId": "io.bertco.coolapp:1.0.2",
-     "functions": []
-   }
+```
+{
+  "apikey": "YOUR_API_KEY_HERE",
+  "beaconInstanceId": "auto:mac:en0",
+  "appVersionId": "io.hrbr.mktest:1.0.0",
+  "functions": [
+    "fsSize",
+    "currentLoad",
+    "mem"
+  ],
+  "sampleInterval": 10,
+  "server": "staging"
+}
 ```
 
 |     Key     |      Value     |  Required |
 |-------------|----------------|-----------|
 | apikey | Your Harbor API Key |    yes    |
+| beaconInstanceId | Whatever you want, but if you put `auto:mac:xxx` it will use the MAC address of your network port. See below. | no |
 | appVersionId | The app this Beacon is assigned to. This app must exist in your Harbor account, or beacon messages will be rejected. | yes |
 | beaconVersionId | Your chosen beacon instance ID (device or system identifier) or enter `auto:mac:<if>` to use the MAC address of one of your network interfaces. For example, to use `en0` enter `auto:mac:en0`.| no, defaults to `null`|
 | functions | SystemInfo functions you want to run on each pass. Refer to the SystemInformation documentation for a list of legal functions. If you attempt an illegal function, it will be flagged in the output.| no, defaults to `["cpu", "mem", "fsSize", "currentLoad"]` |
 | sampleInterval | Sample interval in seconds. Overrides the command line. | no |
 | server | One of "production", "staging", "local". This is for in-house testing and is normally not used. | no, default is "production" |  
 
+### Auto Beacon Instance ID
+
+If you use a `beaconInstanceId` of the form `auto:mac:<iface>` then the beacon will attempt to retrieve the MAC address of <iface> and use
+that as the beaconInstanceId. For example, `auto:mac:en0` will look for the interface named `en0`. Any interface that has a MAC address
+that shows up via `ifconfig` should work.
 
 ## Summary Info
 
 | Item | Value | Comments |
 |------|-------|----------|
-| Beacon Instance ID |  harbor-linux-sysinfo-beacon:0.1.0 | Check package.json as version may have changed |
+| Beacon Instance ID |  harbor-linux-sysinfo-beacon:0.1.1 | *Check package.json as version may have changed* |
 | Beacon Message Type(s) | SYSINFO | Sends only one type |
+
+_NOTE: `beaconInstanceId` is automatically created by concatenating the "name" and "version" fields in the `package.json` file._
 
 ## Beacon Message Format
 
