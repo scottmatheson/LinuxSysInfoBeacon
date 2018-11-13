@@ -270,6 +270,7 @@ Which is probably a little confusing, so here's some real output.
      }
    }
    ```
+<<<<<<< HEAD
    
 ## Docker
 
@@ -293,3 +294,5 @@ To see the output:
 
 
 
+=======
+>>>>>>> d0ff5a2f462f20ee660d06db823697aefe2b9528

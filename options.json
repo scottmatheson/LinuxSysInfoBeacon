@@ -1,0 +1,11 @@
+{
+  "apikey": "YOUR_API_KEY_HERE",
+  "beaconInstanceId": "CONTAINER",
+  "appVersionId": "APP_VERSION_ID_THIS_BEACON_IS_USED_IN",
+  "functions": [
+    "fsSize",
+    "currentLoad",
+    "mem"
+  ],
+  "sampleInterval": 5
+}
