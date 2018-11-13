@@ -10,8 +10,7 @@
 
 const args = require('minimist')(process.argv.slice(2));
 const pjson = require('../package.json');
-const options = require('../options.json');
-const loopDelay = options.sampleInterval * 1000 | args.i || 60000;
+
 
 const colors = require('colors');
 const verbose = args.hasOwnProperty('v');
@@ -22,6 +21,10 @@ const Beacon = require('beacon-es6-driver');
 const si = require('systeminformation');
 const _ = require('lodash');
 const fs = require('fs');
+
+const options = _.merge(require('../options.json'), require('../options.local.json') || {});
+const loopDelay = options.sampleInterval * 1000 | args.i || 60000;
+
 
 const legitFunctions = _.filter(si, _.isFunction).map(f => f.name);
 
@@ -73,7 +76,7 @@ function initialize(beaconInstanceId) {
     Beacon.initialize({
         apiKey: options.apikey,
         appVersionId: options.appVersionId || `${pjson.name}:${pjson.version}`,
-        beaconVersionId: `${pjson.name}:${pjson.version}`,
+        beaconVersionId: options.beaconVersionId | `${pjson.name}:${pjson.version}`,
         beaconInstanceId: beaconInstanceId,
         txOptions: {
             server: options.server || 'production'
@@ -91,6 +94,7 @@ function initialize(beaconInstanceId) {
     // }, 2500);
 
 }
+
 
 if (options.beaconInstanceId.includes('auto:mac')) {
 
@@ -122,7 +126,7 @@ if (options.beaconInstanceId.includes('auto:mac')) {
 
 } else {
 
-    initialize(options.beaconInstanceId || null);
+    initialize(options.beaconInstanceId);
 
 }
 

@@ -8,9 +8,11 @@ Link: https://www.npmjs.com/package/systeminformation
 ## Usage
 
 1. Clone the repo from Github.
-2. `yarn` to download and resolve all dependencies.
-3. Configure as needed in the `options.json` (see below).
-4. Register the `beaconVersionId` in the App in Harbor. The `beaconVersionId` is generated from the `package.json` `name` and `version` fields concatenated with a `:` between them. For this version it is `harbor-linux-sysinfo-beacon:0.1.0`.
+2. `yarn` to download and resolve all dependencies. `npm` can be used as well: `npm install`.
+3. Configure as needed in the `options.json` and/or `options.local.json` (see below).
+4. Register the `beaconVersionId` in the App in Harbor. The `beaconVersionId` is generated from the `package.json` `name` and 
+  `version` fields concatenated with a `:` between them. For this version it is `harbor-linux-sysinfo-beacon:0.1.2`. You can also
+   override the `beaconVersionId` through the `options` files.
 5. `node src/index.js`
 6. We suggest using `pm2` to run this beacon at startup automatically.
 
@@ -26,6 +28,10 @@ Verbose mode, 10s interval.
 
 ## Configuration Options (options.json)
 
+Two files are used to set options: `options.json` and `options.local.json`. The local file is not included in the repository
+as it is usually used to hold sensitive info like API keys. The app will merge the two files on startup, with `options.local.json`
+fields taking precendence.
+
 An example JSON options file is shown below.
 
 ```
@@ -38,17 +44,16 @@ An example JSON options file is shown below.
     "currentLoad",
     "mem"
   ],
-  "sampleInterval": 10,
-  "server": "staging"
+  "sampleInterval": 10
 }
 ```
 
 |     Key     |      Value     |  Required |
 |-------------|----------------|-----------|
 | apikey | Your Harbor API Key |    yes    |
-| beaconInstanceId | Whatever you want, but if you put `auto:mac:xxx` it will use the MAC address of your network port. See below. | no |
+| beaconVersionId | This must match the beaconVersionId registered to the appVersionId in the system (see, below). If you do not include this field (as in the example above), it is automatically set by concatenating the `name` and `version` fields in the `package.json` file. See below. | no |
 | appVersionId | The app this Beacon is assigned to. This app must exist in your Harbor account, or beacon messages will be rejected. | yes |
-| beaconVersionId | Your chosen beacon instance ID (device or system identifier) or enter `auto:mac:<if>` to use the MAC address of one of your network interfaces. For example, to use `en0` enter `auto:mac:en0`.| no, defaults to `null`|
+| beaconInstanceId | Your chosen beacon instance ID (device or system identifier) or enter `auto:mac:<if>` to use the MAC address of one of your network interfaces. For example, to use `en0` enter `auto:mac:en0`.| no, defaults to `null`|
 | functions | SystemInfo functions you want to run on each pass. Refer to the SystemInformation documentation for a list of legal functions. If you attempt an illegal function, it will be flagged in the output.| no, defaults to `["cpu", "mem", "fsSize", "currentLoad"]` |
 | sampleInterval | Sample interval in seconds. Overrides the command line. | no |
 | server | One of "production", "staging", "local". This is for in-house testing and is normally not used. | no, default is "production" |  
@@ -59,11 +64,19 @@ If you use a `beaconInstanceId` of the form `auto:mac:<iface>` then the beacon w
 that as the beaconInstanceId. For example, `auto:mac:en0` will look for the interface named `en0`. Any interface that has a MAC address
 that shows up via `ifconfig` should work.
 
+### Auto Beacon Version ID
+If you do not include a beaconVersionId entry in either `options.json` or `options.local.json` then a `beaconVersionId` will be created from the `name` and `version` fields in the `package.json` file as follows:
+
+    const beaconVersionId = options.beaconVersionId | `${pjson.name}:${pjson.version}`
+    
+The pseudo code above results in a `beaconVersionId` like `harbor-linux-sysinfo-beacon:0.1.2`. NOTE: If you are using auto beacon version id, double check the `name` and `version` in the `package.json` and make sure
+this matches the beacon you have registered in the system. (Phew, I think we've said this enough, amiright?)
+
 ## Summary Info
 
 | Item | Value | Comments |
 |------|-------|----------|
-| Beacon Instance ID |  harbor-linux-sysinfo-beacon:0.1.1 | *Check package.json as version may have changed* |
+| Beacon Instance ID |  harbor-linux-sysinfo-beacon:0.1.2 | *Check package.json as version may have changed* |
 | Beacon Message Type(s) | SYSINFO | Sends only one type |
 
 _NOTE: `beaconInstanceId` is automatically created by concatenating the "name" and "version" fields in the `package.json` file._
@@ -257,3 +270,26 @@ Which is probably a little confusing, so here's some real output.
      }
    }
    ```
+   
+## Docker
+
+Build the container in the root folder:
+
+`docker build -t hrbrio/lsibeacon .`
+
+`hrbrio/lsibeacon` is the tag name for this container. This is the release name in DockerHub.
+
+`docker run -d hrbrio/lsibeacon`
+
+And that's it, you're running. Well, actually you're not. You need to pass in APIKEY, APPVERSIONID, and a valid CONFIG. 
+
+If you want to pass environment variables, do it like so:
+
+`docker run -d -e APIKEY='xyz1234yadahey' -e APPVERSIONID='io.dude.cool:2.3.4' hrbrio/lsibeacon`
+
+To see the output:
+
+`docker logs <containerId>`
+
+
+

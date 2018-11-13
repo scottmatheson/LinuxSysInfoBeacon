@@ -1,6 +1,6 @@
 {
   "name": "harbor-linux-sysinfo-beacon",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Hrbr.io Linux Sysinfo agent that makes use of the ES6 Beacon Driver",
   "main": "index.js",
   "scripts": {
