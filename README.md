@@ -10,7 +10,7 @@ Link: https://www.npmjs.com/package/systeminformation
 1. Clone the repo from Github.
 2. `yarn` to download and resolve all dependencies.
 3. Configure as needed in the `options.json` (see below).
-4. Register the `beaconVersionId` in the App in Harbor. The `beaconVersionId` is generated from the `package.json` `name` and `version` fields concatenated with a `:` between them. For this version it is `harbor-linux-sysinfo-beacon:0.1.0`.
+4. Register the `beaconVersionId` in the App in Harbor. The `beaconVersionId` is generated from the `package.json` `name` and `version` fields concatenated with a `:` between them. For this version it is `harbor-linux-sysinfo-beacon:0.1.1`. Always check `package.json` and make sure it matches the beacon you have registered in the system.
 5. `node src/index.js`
 6. We suggest using `pm2` to run this beacon at startup automatically.
 
