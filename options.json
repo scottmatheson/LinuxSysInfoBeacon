@@ -1,7 +1,7 @@
 {
-  "apikey": "YOUR_API_KEY_HERE",
+  "apikey": "YOUR_API_KEY",
   "beaconInstanceId": "CONTAINER",
-  "appVersionId": "APP_VERSION_ID_THIS_BEACON_IS_USED_IN",
+  "appVersionId": "io.hrbr.cloudstaging:1.0.0",
   "functions": [
     "fsSize",
     "currentLoad",

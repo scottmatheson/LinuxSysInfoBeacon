@@ -4,7 +4,7 @@
  Function:   Main entry for Sysinfo Beacon
  Copyright:  hrbr.io
  Date:       6/27/18 6:40 PM
- Author:     mkahn
+ Author:     Mitch Kahn
 
  **********************************/
 
@@ -21,8 +21,7 @@ const Beacon = require('beacon-es6-driver');
 const si = require('systeminformation');
 const _ = require('lodash');
 const fs = require('fs');
-
-const options = _.merge(require('../options.json'), require('../options.local.json') || {});
+const options = require('./stacked-options')();
 const loopDelay = options.sampleInterval * 1000 | args.i || 60000;
 
 
@@ -76,7 +75,7 @@ function initialize(beaconInstanceId) {
     Beacon.initialize({
         apiKey: options.apikey,
         appVersionId: options.appVersionId || `${pjson.name}:${pjson.version}`,
-        beaconVersionId: options.beaconVersionId | `${pjson.name}:${pjson.version}`,
+        beaconVersionId: options.beaconVersionId || `${pjson.name}:${pjson.version}`,
         beaconInstanceId: beaconInstanceId,
         txOptions: {
             server: options.server || 'production'
